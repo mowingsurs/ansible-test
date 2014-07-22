@@ -1,0 +1,7 @@
+---
+- name: Update to latest packages
+  hosts: all
+  user: root
+  tasks:
+  - name: update all packages
+    action: yum pkg=* state=latest

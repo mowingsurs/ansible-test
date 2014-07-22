@@ -1,0 +1,10 @@
+---
+- name: Run sosreport 
+  hosts: all
+  user: mowings
+  sudo: yes
+  tasks:
+  - name: make sure sos pacakge installed
+    action: yum pkg=sos state=installed
+  - name: run sosreport
+    shell: sosreport --batch

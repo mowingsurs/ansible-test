@@ -1,0 +1,23 @@
+---
+- name: Prepare initial vm 
+  hosts: all
+  user: root
+  tasks:
+  - name: update all packages
+    action: yum pkg=* state=latest
+  - name: install ntp
+    action: yum pkg=ntp state=installed
+  - name: start ntpd
+    action: service name=ntpd state=started enabled=true
+  - name: install perl
+    action: yum pkg=perl state=installed
+  - name: install man
+    action: yum pkg=man state=installed
+  - name: install sudo
+    action: yum pkg=sudo state=installed
+  - name: install sosreport
+    action: yum pkg=sos state=installed
+  - name: ensure python-selinux is installed on all nodes.
+    action: yum name=libselinux-python state=installed 
+  - name: disable selinux
+    action: selinux state=disabled

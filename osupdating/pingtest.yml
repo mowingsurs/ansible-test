@@ -1,0 +1,8 @@
+---
+- name: Run ping test 
+  hosts: all
+  user: mowings
+  sudo: yes
+  tasks:
+  - name: make sure server is alive
+    action: ping

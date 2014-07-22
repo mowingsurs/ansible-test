@@ -1,0 +1,13 @@
+---
+- name: Install VMware tools 
+  hosts: all
+  user: root
+  tasks:
+  - name: copy installation files to virtual server
+    action: copy src=/var/lib/awx/projects/osupdating/VMwareTools-8.3.17-784891.tar dest=/tmp//VMwareTools-8.3.17-784891.tar owner=root group=root mode=0644
+  - name: extract files from tar file
+    shell: tar -xvf /tmp/VMwareTools-8.3.17-784891.tar -C /tmp
+  - name: run installation script
+    shell: yes | /tmp/vmware-tools-distrib/vmware-install.pl default
+  - name: cleanup files
+    shell: rm -R -f /tmp/vmware-tool* /tmp/VMwareTools*

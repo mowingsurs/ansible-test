@@ -1,0 +1,7 @@
+---
+- name: Reboot 
+  hosts: all
+  user: root
+  tasks:
+  - name: shutdown
+    shell: shutdown -r now

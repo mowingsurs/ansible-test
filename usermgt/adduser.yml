@@ -1,0 +1,10 @@
+---
+- name: Add user 
+  hosts: all
+  user: mowings
+  sudo: yes 
+  tasks:
+  - name: add sam
+    action: user name=sam shell=/bin/bash
+  - name: add ernie
+    action: user name=ernie shell=/bin/bash

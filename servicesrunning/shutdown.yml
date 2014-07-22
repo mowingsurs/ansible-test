@@ -1,0 +1,7 @@
+---
+- name: Shutdown
+  hosts: all
+  user: root
+  tasks:
+  - name: shutdown
+    shell: shutdown -h now

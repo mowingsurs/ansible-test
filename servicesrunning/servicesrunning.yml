@@ -1,0 +1,7 @@
+---
+- name: Services configured
+  hosts: all
+  user: root
+  tasks:
+  - name: listservices
+    shell: chkconfig --list
