@@ -1,0 +1,9 @@
+---
+- name: Basic server statistics 
+  hosts: all
+  user: root
+  tasks:
+  - name: uptime and load
+    shell: w
+  - name: file system usage
+    shell: df -h
