@@ -1,10 +1,11 @@
 ---
 - name: Add user 
   hosts: all
-  user: mowings
-  sudo: yes 
+  user: root 
   tasks:
   - name: add sam
-    action: user name=sam shell=/bin/bash
+    action: user name=cyberark shell=/bin/bash
   - name: add ernie
-    action: user name=ernie shell=/bin/bash
+    action: user name=ecap1 shell=/bin/bash
+    action: user name=ecap2 shell=/bin/bash
+    action: user name=ecap3 shell=/bin/bash

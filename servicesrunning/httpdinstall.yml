@@ -1,8 +1,7 @@
 ---
 - name: Install Apache httpd 
   hosts: all
-  user: mowings
-  sudo: yes
+  user: root 
   tasks:
   - name: install httpd pacakge
     action: yum pkg=httpd state=installed

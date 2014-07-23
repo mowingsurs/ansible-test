@@ -1,8 +1,7 @@
 ---
 - name: Remove Apache httpd 
   hosts: all
-  user: mowings 
-  sudo: yes
+  user: root 
   tasks:
   - name: remove httpd pacakge
     action: yum pkg=httpd state=absent
