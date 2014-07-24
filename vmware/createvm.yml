@@ -1,10 +1,29 @@
 ---
-- name: Turn on guest VM
+- name: create guest VM
   hosts: localhost
+  gather_facts: false
+
+  vars:
+    - vmextra:
+        vcpu.hotadd=yes
+        mem.hotadd=yes
+        notes="This is a test VM"
+    - vmdisk:
+        disk1:
+          size_g=10
+          type=thin
+          datastore=datastore1
+    - vmnic:
+        nic1:
+          type=vmxnet3
+          network=VM Network
+          network_type=standard
+    - vmhardware:
+        memory_mb=2048
+        num_cpus=2
+        osid=centos64Guest
+        scsi=paravirtual
+
   tasks:
-  - name: turn on guest VM 
-    action: vsphere_guest vcenter_hostname=172.22.40.97 username=root password=Mister2$ guest={{ item }} state=powered_on
-    with_items:
-      - serverA
-      - serverB
-      - serverC
+  - name: create guest VM 
+    vsphere_guest: vcenter_hostname=172.22.40.89 username=root password=Mister2$ guest=blank01 state=powered_on vm_extra_config=${vmextra] vm_disk=${vmdisk} vm_nic=${vmnic} vm_hardware=${vmhardware}
