@@ -3,9 +3,9 @@
   hosts: all
   user: root 
   tasks:
-  - name: add sam
+  - name: add cyberark user 
     action: user name=cyberark shell=/bin/bash
-  - name: add ernie
+  - name: add ecap users
     action: user name=ecap1 shell=/bin/bash
     action: user name=ecap2 shell=/bin/bash
     action: user name=ecap3 shell=/bin/bash

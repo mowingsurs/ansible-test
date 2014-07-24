@@ -1,0 +1,10 @@
+---
+- name: Gather info on guest VM
+  hosts: localhost
+  tasks:
+  - name: gather info on guest VM 
+    action: vsphere_guest vcenter_hostname=172.22.40.97 username=root password=Mister2$ guest={{ item }} vmware_guest_facts=yes
+    with_items:
+      - serverA
+      - serverB
+      - serverC

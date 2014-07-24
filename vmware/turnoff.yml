@@ -1,0 +1,11 @@
+---
+- name: Turn on guest VM
+  hosts: localhost
+  tasks:
+  - name: turn on guest VM 
+    action: vsphere_guest vcenter_hostname=172.22.40.97 username=root password=Mister2$ guest={{ item }} state=powered_off
+    with_items:
+      - serverA
+      - serverB
+      - serverC
+

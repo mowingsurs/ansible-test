@@ -5,3 +5,6 @@
   tasks:
   - name: update all packages
     action: yum pkg=* state=latest
+    notify: reboot
+  - handler: reboot
+    shell: shutdown -r now
