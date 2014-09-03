@@ -21,3 +21,9 @@
     action: yum name=libselinux-python state=installed 
   - name: disable selinux
     action: selinux state=disabled
+  - name: backup current audit rules
+    shell: cp /etc/audit/audit.rules /etc/audit/audit.rules_backup
+  - name: copy stig rules file
+    shell: cp /usr/share/doc/audit-version/stig.rules /etc/audit/audit.rules
+  - name: install auditd
+    action: yum pkg=audit state=installed

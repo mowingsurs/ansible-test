@@ -1,0 +1,5 @@
+[vmware-tools]
+name=VMware Tools
+baseurl=http://packages.vmware.com/tools/esx/4.1latest/rhel6/x86_64/index.html
+enabled=1
+gpgcheck=1

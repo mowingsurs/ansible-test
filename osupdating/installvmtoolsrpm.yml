@@ -1,0 +1,17 @@
+---
+- name: Install VMware tools RPM 
+  hosts: all
+  user: root
+  tasks:
+  - name: copy dsa public key file to virtual server
+    action: copy src=/var/lib/awx/projects/osupdating/VMWARE-PACKAGING-GPG-DSA-KEY.pub dest=/tmp/VMWARE-PACKAGING-GPG-DSA-KEY.pub owner=root group=root mode=0644
+  - name: copy rsa public key file to virtual server
+    action: copy src=/var/lib/awx/projects/osupdating/VMWARE-PACKAGING-GPG-RSA-KEY.pub dest=/tmp/VMWARE-PACKAGING-GPG-RSA-KEY.pub owner=root group=root mode=0644
+  - name: copy repository config file
+    action: copy  src=/var/lib/awx/projects/osupdating/vmware-tools.repo dest=/etc/yum.repos.d/vmware-tools.repo owner=root group=root mode=0644
+  - name: import dsa public key
+    shell: rpm --import /tmp/VMWARE-PACKAGING-GPG-DSA-KEY.pub
+  - name: import rsa public key
+    shell: rpm --import /tmp/VMWARE-PACKAGING-GPG-RSA-KEY.pub
+  - name: install vmware tools
+    shell: yum -y install vmware-tools

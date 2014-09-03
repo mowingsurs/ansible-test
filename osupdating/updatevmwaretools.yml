@@ -1,0 +1,7 @@
+---
+- name: Update VMware tools 
+  hosts: all
+  user: root
+  tasks:
+  - name: run installation script
+    shell: /usr/bin/vmware-config-tools.pl default
